@@ -1,0 +1,14 @@
+{
+	"id": "{007BC749-7103-42E1-BDC6-434EE2C9B258}",
+	"name": "TFopenmower",
+	"type": 3,
+	"vendor": "Clemens Elflein",
+	"aliases": 
+	[
+		"OpenMower"
+	],
+	"parentRequirements": ["{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}"],
+	"childRequirements": [],
+	"implemented": ["{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}"],
+	"prefix": "TFOM"
+}

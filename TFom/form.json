@@ -1,0 +1,9 @@
+{
+	"elements":
+	[
+	],
+	"actions":
+	[
+		{ "type": "Button", "label": "Test", "onClick": "TFOM_Test($id);" }
+	]
+}
