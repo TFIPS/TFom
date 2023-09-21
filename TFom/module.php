@@ -95,12 +95,12 @@ class TFopenmower extends IPSModule
 		$data = json_decode($JSONString, true);
 		if($data['DataID'] == '{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}')
 		{
-			//$this->SendDebug("Empfange", $data['Topic'], 1);
+			//$this->SendDebug("AllTopics", $data['Topic'], 0);
 			$topic = explode('/', $data['Topic']);
 			if($topic[0] == "robot_state" && $topic[1] == "json")
 			{
 				$valueData = json_decode($data["Payload"], true);
-				//$this->SendDebug("Empfange",$data["Payload"], 0);
+				$this->SendDebug("robot_state",$data["Payload"], 0);
 				switch($valueData["current_state"])
 				{
 					case "IDLE" 			: $this->SetValue("state", 0);break;
@@ -165,13 +165,20 @@ class TFopenmower extends IPSModule
 					$this->SetValue("mowA", $data["Payload"]);
 				}
 				else
-				{
-					//$this->SendDebug("Empfange",$data["Payload"], 1);
+				{				
+					//$this->SendDebug("Sonstiges",$data["Payload"], 0);
 				}
+			}
+			else if($topic[0] == "actions" && $topic[1] == "json")
+			{
+				$this->SendDebug("Actions", $data["Payload"], 0);	
 			}
 			else
 			{
-				//$this->SendDebug("Empfange", $data['Topic'], 1);
+				if($topic[1] != "bson") // No Binary Data !
+				{
+					$this->SendDebug("Topics", $data['Topic'], 0);	
+				}
 			}
 		}    
     }
